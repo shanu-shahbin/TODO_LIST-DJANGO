@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-image: url({% static 'images/demo1.jpg'%}) ;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .inline-form {
+            background: #;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-right: 10px;
+            text-align: center;
+        }
+        .inline-form button {
+              display: inline-block;
+              text-align: center;
+              }
+    </style>
+</head>
+<body>
+    <form method="POST" class="inline-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-outline-light">Confirm</button>
+    </form>
+
+</body>
+</html>

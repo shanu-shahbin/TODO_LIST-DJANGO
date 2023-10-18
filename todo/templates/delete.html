@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background-color: black;
+            text-align: center;
+        }
+
+        form {
+            display: inline-block;
+        }
+
+        p {
+            color: white;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" id="deleteForm">
+        {% csrf_token %}
+        <p>Are you sure you want to delete?</p>
+        <br>
+        <button type="submit" id="confirmButton">Confirm</button>
+    </form>
+
+    <script>
+        document.getElementById("confirmButton").addEventListener("click", function() {
+            alert("Danger! This action will delete the task.");
+        });
+    </script>
+</body>
+</html>
