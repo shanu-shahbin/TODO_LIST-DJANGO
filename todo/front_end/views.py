@@ -8,8 +8,9 @@ def home(request):
     task_all = Todo.objects.all()
     if request.method == 'POST':
         name = request.POST.get('task', '')
+        priority = request.POST.get('priority', '')
         date = request.POST.get('date', '')
-        task = Todo(title=name, date=date)
+        task = Todo(title=name, date=date, priority=priority)
         task.save()
     return render(request, 'home.html', {'task_all': task_all})
 
@@ -28,4 +29,4 @@ def update(request, id):
     if form.is_valid():
         form.save()
         return redirect('/')
-    return render (request,'edit.html', {'form':form, 'task':task})
+    return render(request, 'edit.html', {'form': form, 'task':task})

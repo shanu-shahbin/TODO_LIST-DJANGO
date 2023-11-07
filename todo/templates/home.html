@@ -25,30 +25,33 @@
   }
     </style>
 </head>
-<body style="background-image: url({% static 'images/demo5.jpg'%})">
+<body style="background-image: url({% static 'images/todo_background.jpg'%})">
 <nav class="navbar navbar-expand-lg bg-light" >
   <div class="container-fluid" style="background-color: #f8f9fa">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" style="font-size: 35px; font-weight: bold; color: #0a58ca;">ToDo</a>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" style="font-size: 30px; font-weight: bold; color: #0a58ca;">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="font-size: 30px; font-weight: bold; color: #0a58ca;">shane</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" style="font-size: 30px; font-weight: bold; color: #0a58ca;">completed</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
+<!--    <a class="navbar-brand" style="font-size: 35px; font-weight: bold; color: #0a58ca;">ToDo</a>-->
+<!--    <a class="navbar-brand" style="font-size: 35px; font-weight: bold; color: #0a58ca; text-align: center;">ToDo</a>-->
+<a class="navbar-brand" style="font-size: 50px; font-weight: bold; color: #0a58ca; text-align: center; padding-left: 500px;">ToDo</a>
+
+<!--    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">-->
+<!--      <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link active" aria-current="page" style="font-size: 30px; font-weight: bold; color: #0a58ca;">Home</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" style="font-size: 30px; font-weight: bold; color: #0a58ca;">shane</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link disabled" style="font-size: 30px; font-weight: bold; color: #0a58ca;">completed</a>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--      <form class="d-flex" role="search">-->
+<!--        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--        <button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--      </form>-->
+<!--    </div>-->
   </div>
 </nav>
 <div class="row">
@@ -72,7 +75,9 @@
                     <form method="POST">
                       {% csrf_token %}
                     <input type="text" name="task" class="form-control form-control-lg"
-                           id="exampleFormControlInput1" placeholder="Add new...">
+                           id="exampleFormControlInput1" placeholder="Add new Task...">
+                      <input type="text" name="priority" class="form-control" placeholder="Enter priority">
+
                     <a href="#!" data-mdb-toggle="tooltip" title="Set due date"><i
                         class="fas fa-calendar-alt fa-lg me-3"></i></a>
                     <div>
@@ -87,22 +92,7 @@
 
             <hr class="my-4">
 
-            <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
-              <p class="small mb-0 me-2 text-muted">Filter</p>
-              <select class="select">
-                <option value="1">All</option>
-                <option value="2">Completed</option>
-                <option value="3">Active</option>
-                <option value="4">Has due date</option>
-              </select>
-              <p class="small mb-0 ms-4 me-2 text-muted">Sort</p>
-              <select class="select">
-                <option value="1">Added date</option>
-                <option value="2">Due date</option>
-              </select>
-              <a href="#!" style="color: #23af89;" data-mdb-toggle="tooltip" title="Ascending"><i
-                  class="fas fa-sort-amount-down-alt ms-2"></i></a>
-            </div>
+
             {% for i in task_all %}
             <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
               <li
@@ -114,7 +104,8 @@
               </li>
               <li
                 class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                <p class="lead fw-normal mb-0">{{ i.title }}</p>
+                <p class="lead fw-normal mb-0" style="color: black; font-weight:bold; font-size: 30px;">{{ i.title }}__({{ i.priority }})</p>
+
               </li>
               <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
                 <div class="d-flex flex-row justify-content-end mb-1">
